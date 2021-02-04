@@ -38,6 +38,7 @@ void *inc_shared_counter(void *arg) {
                    between the two threads */
         pthread_mutex_lock( &mutex );
         x = x + 1;
+        printf("x is incremented to %d\n", x);
         pthread_mutex_unlock( &mutex );
         
 
