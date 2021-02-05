@@ -15,27 +15,37 @@ void segment_fault_handler(int signum) {
  
     /* Implement Code Here */
     void* signum_address = &signum;
-    printf("signum_addrress =\t %p\n", signum_address);
 
-    void* prev_frame_stack_pointer = signum_address + 0xD44;
-    printf("prev_frame_stack_pointer =\t\t %p\n", prev_frame_stack_pointer);
+    void* signal_handler_frame_address = signum_address + 0xd14;
 
-    void* prev_frame_base_pointer = prev_frame_stack_pointer - 0x10;
-    printf("prev_frame_base_pointer= \t %p\n", prev_frame_base_pointer);
+    void* main_frame_address = signal_handler_frame_address + 0x30;
 
-    char* prev_frame_instruction_pointer = prev_frame_base_pointer + 0x8;
-    printf("prev_frame_instruction_pointer = \t %p\n", prev_frame_instruction_pointer);
+    char* main_rip_address = main_frame_address - 0xc68;
+
+    *main_rip_address -= 0xfffffffffffffff;
+
+    // char* main_frame_rip = main_frame_address - 0x8;
+
+    //7fffffffd82
+
+    // *main_frame_rip -= 100;
+    // void* prev_frame_stack_pointer = signum_address - 0x8;
+    // printf("prev_frame_stack_pointer =\t\t %p\n", prev_frame_stack_pointer);
+
+    // void* prev_frame_base_pointer = prev_frame_stack_pointer - 0x10;
+    // printf("prev_frame_base_pointer= \t %p\n", prev_frame_base_pointer);
+
+    // char* prev_frame_instruction_pointer = prev_frame_base_pointer + 0x8;
+    // printf("prev_frame_instruction_pointer = \t %p\n", prev_frame_instruction_pointer);
+
+    // *prev_frame_instruction_pointer += 10;
 
     // exit(0);
 
     /**
-     * 
-     * 
-     * 0x7fffffffe490 = prev frame sp
-     * 0x7fffffffd75c = signum
-     * 
-     * end of instruction is at 0x7fffffffe488, we want to be at 
+     * ITS SIGNAL HANDELR (f 1)'s RIP ADDRESS
      */
+
     if(count > 5) exit(0);
 }
 
