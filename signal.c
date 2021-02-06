@@ -7,10 +7,7 @@
  * such that you get to the line after "r2 = *( (int *) 0 )"
  */
 
-int count = 0;
-
 void segment_fault_handler(int signum) {
-    count++;
     printf("I am slain!\n");
  
     /* Implement Code Here */
@@ -22,31 +19,7 @@ void segment_fault_handler(int signum) {
 
     char* main_rip_address = main_frame_address - 0xc68;
 
-    *main_rip_address -= 0xfffffffffffffff;
-
-    // char* main_frame_rip = main_frame_address - 0x8;
-
-    //7fffffffd82
-
-    // *main_frame_rip -= 100;
-    // void* prev_frame_stack_pointer = signum_address - 0x8;
-    // printf("prev_frame_stack_pointer =\t\t %p\n", prev_frame_stack_pointer);
-
-    // void* prev_frame_base_pointer = prev_frame_stack_pointer - 0x10;
-    // printf("prev_frame_base_pointer= \t %p\n", prev_frame_base_pointer);
-
-    // char* prev_frame_instruction_pointer = prev_frame_base_pointer + 0x8;
-    // printf("prev_frame_instruction_pointer = \t %p\n", prev_frame_instruction_pointer);
-
-    // *prev_frame_instruction_pointer += 10;
-
-    // exit(0);
-
-    /**
-     * ITS SIGNAL HANDELR (f 1)'s RIP ADDRESS
-     */
-
-    if(count > 5) exit(0);
+    *main_rip_address += 0x2;
 }
 
 int main(int argc, char *argv[]) {
