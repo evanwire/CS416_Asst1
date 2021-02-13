@@ -1,10 +1,10 @@
 /* threads.c
  *
  * Group Members Names and NetIDs:
- *   1.
- *   2.
+ *   1. Evan Wireman - emw160
+ *   2. Reagan McFarland - rpm141
  *
- * ILab Machine Tested on:
+ * ILab Machine Tested on: ilab1
  *
  */
 

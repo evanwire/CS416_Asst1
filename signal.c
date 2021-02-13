@@ -5,7 +5,15 @@
 /* Part 1 - Step 2 to 4: Do your tricks here
  * Your goal must be to change the stack frame of caller (main function)
  * such that you get to the line after "r2 = *( (int *) 0 )"
+ * 
+ * Group Members Names and NetIDs:
+ *   1. Evan Wireman - emw160
+ *   2. Reagan McFarland - rpm141
+ *
+ * ILab Machine Tested on: ilab1
+ *
  */
+ 
 
 void segment_fault_handler(int signum) {
     printf("I am slain!\n");
